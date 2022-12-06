@@ -104,7 +104,7 @@ this.ScenarioInitialize(scenarioInfo);
 testRunner.Given("the user has a valid login credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
-testRunner.When("the user clicks on the \"Login\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.When("the user clicks on the Signin button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                             "Username",
@@ -116,7 +116,7 @@ testRunner.When("the user clicks on the \"Login\" button", ((string)(null)), ((T
 testRunner.And("the user enters \"Username\" and \"Password\"", ((string)(null)), table1, "And ");
 #line hidden
 #line 11
-testRunner.And("the user clicks on the \"LoginSubmit\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("the user clicks on the Submit button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
 testRunner.Then("the user is successfully logged in to dashboard \"QA Automation\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

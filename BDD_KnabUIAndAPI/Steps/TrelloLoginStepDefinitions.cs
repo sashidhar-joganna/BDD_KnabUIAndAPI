@@ -40,37 +40,43 @@ namespace BDD_KnabUIAndAPI
             
         }
 
-        [When(@"the user clicks on the login button")]
-        public void WhenTheUserClicksOnTheLoginButton(String t)
+
+        [When(@"the user clicks on the Signin button")]
+        public void WhenTheUserClicksOnTheSigninButton()
         {
-            Assert.Equal(t, LoginLocators.LoginButton.Text);
-            LoginLocators.ClickEvent();
+            LoginLocators.SignInButton.Click();
         }
 
         [When(@"the user enters ""(.*)"" and ""(.*)""")]
         public void WhenTheUserEntersAnd(string userName, string password)
         {
-            LoginLocators.UserNameInput.SendKeys(userName);
-            LoginLocators.ContinueButton.Click();
-            Assert.Equal(userName, LoginLocators.LoggingUser.Text);
-            LoginLocators.PasswordInput.SendKeys(password);
-                    }
+            //LoginLocators.UserNameInput.SendKeys(userName);
+            //LoginLocators.ContinueButton.Click();
+            //Assert.Equal(userName, LoginLocators.LoggingUser.Text);
+            //LoginLocators.PasswordInput.SendKeys(password);
+        }
 
-        [When(@"the user clicks on the ""(.*)"" button")]
-        public void WhenTheUserClicksOnTheButton(string Submit)
+        [When(@"the user clicks on the Submit button")]
+        public void WhenTheUserClicksOnTheSubmitButton()
         {
-
-            Assert.Equal(Submit, LoginLocators.LoginSubmitButton.Text);
-            LoginLocators.LoginSubmitButton.Click();
-           
+            //LoginLocators.LoginSubmitButton.Click();
         }
 
         [Then(@"the user is successfully logged in to dashboard ""(.*)""")]
         public void ThenTheUserIsSuccessfullyLoggedInToDashboard(string p0)
         {
-            Console.WriteLine("User logged in");        
+            //Console.WriteLine("User logged in");        
         }
 
+
+
+
+
+
+
+
+
+       
 
 
 

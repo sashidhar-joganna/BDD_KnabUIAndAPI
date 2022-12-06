@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace BDD_KnabUIAndAPI
 
         public static void InitializeTest()
         {
-            Driver = new ChromeDriver(Environment.CurrentDirectory);
+            Driver = new EdgeDriver();
             Driver.Navigate().GoToUrl("http://trello.com");
             Driver.Manage().Window.Maximize();
 
@@ -23,7 +24,7 @@ namespace BDD_KnabUIAndAPI
 
         public static void EndTest()
         {
-            Driver.Quit();
+            Driver.Close();
         }
 
         public static void ScrollToElement(IWebElement element)
