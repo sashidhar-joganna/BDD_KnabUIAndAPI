@@ -106,19 +106,13 @@ testRunner.Given("the user has a valid login credentials", ((string)(null)), ((T
 #line 7
 testRunner.When("the user clicks on the Signin button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Username",
-                            "Password"});
-                table1.AddRow(new string[] {
-                            "l0gint3st@gmail.com",
-                            "Testen01"});
 #line 8
-testRunner.And("the user enters \"Username\" and \"Password\"", ((string)(null)), table1, "And ");
+testRunner.And("the user enters \"sashizen@gmail.com\" and \"Testen01\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 11
+#line 9
 testRunner.And("the user clicks on the Submit button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 12
+#line 10
 testRunner.Then("the user is successfully logged in to dashboard \"QA Automation\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

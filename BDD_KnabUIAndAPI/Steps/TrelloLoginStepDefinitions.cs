@@ -1,71 +1,81 @@
 ﻿using BDD_KnabUIAndAPI.Components;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data;
-using System.Linq;
-using System.Text;
 using TechTalk.SpecFlow;
 using Xunit;
 
-namespace BDD_KnabUIAndAPI
+namespace BDD_KnabUIAndAPI.Steps
 {
     [Binding]
     public sealed class TrelloLoginStepDefinitions
     {
-        // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
-
-        public static IWebDriver Driver {get; set;}
-        public static int Timeout = 30;
+        
+        LoginLocators LoginLocators = null;
 
         [BeforeScenario]
 
         public void BeforeScenario()
         {
-          
+            
             CommonSteps.InitializeTest();
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
+            
             CommonSteps.EndTest();
         }
 
         [Given(@"the user has a valid login credentials")]
         public void GivenTheUserHasAValidLoginCredentials()
         {
-            
+           
         }
 
 
         [When(@"the user clicks on the Signin button")]
         public void WhenTheUserClicksOnTheSigninButton()
         {
-            LoginLocators.SignInButton.Click();
+          
+            
+            LoginLocators login = new LoginLocators(CommonSteps.Driver);
+
+            login.SigninClick();
+           
+            
         }
 
+
         [When(@"the user enters ""(.*)"" and ""(.*)""")]
-        public void WhenTheUserEntersAnd(string userName, string password)
+        public void WhenTheUserEntersAnd(string username, string password)
         {
-            //LoginLocators.UserNameInput.SendKeys(userName);
-            //LoginLocators.ContinueButton.Click();
-            //Assert.Equal(userName, LoginLocators.LoggingUser.Text);
-            //LoginLocators.PasswordInput.SendKeys(password);
+            LoginLocators login = new LoginLocators(CommonSteps.Driver);
+            
+            login.Login(username, password);
+            CommonSteps.AddDelay();         
+           // Assert.Matches(username, login.LoggingUser.Text);
+           
         }
+
+
+ 
+
+
 
         [When(@"the user clicks on the Submit button")]
         public void WhenTheUserClicksOnTheSubmitButton()
         {
-            //LoginLocators.LoginSubmitButton.Click();
+            LoginLocators login = new LoginLocators(CommonSteps.Driver);
+            login.LoginSubmitButton.Click();
         }
 
         [Then(@"the user is successfully logged in to dashboard ""(.*)""")]
         public void ThenTheUserIsSuccessfullyLoggedInToDashboard(string p0)
         {
-            //Console.WriteLine("User logged in");        
+            DashboardLocators dashboard = new DashboardLocators(CommonSteps.Driver);
+            Console.WriteLine("User logged in");        
         }
 
 

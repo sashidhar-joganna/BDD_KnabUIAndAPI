@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,48 +16,24 @@ namespace BDD_KnabUIAndAPI
 
         public static void InitializeTest()
         {
-            Driver = new EdgeDriver();
+            Driver = new FirefoxDriver();
             Driver.Navigate().GoToUrl("http://trello.com");
             Driver.Manage().Window.Maximize();
 
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Timeout);
         }
 
+
+
         public static void EndTest()
         {
+            
             Driver.Close();
         }
 
-        public static void ScrollToElement(IWebElement element)
+        public static void AddDelay()
         {
-            var yPos = element.Location.Y;
-            var windowSize = Driver.Manage().Window.Size.Height;
-            var scrollPosition = yPos - (windowSize / 2);
-            ((IJavaScriptExecutor)Driver).ExecuteScript("window.scrollTo(0, arguments[0]);", scrollPosition);
-        }
-
-        public static bool Exists(By elementBy)
-        {
-            try
-            {
-                return Driver.FindElement(elementBy).Displayed;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }
-
-        public static bool Exists(IWebElement baseElement, By elementBy)
-        {
-            try
-            {
-                return baseElement.FindElement(elementBy).Displayed;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Timeout);
         }
     }
 }
