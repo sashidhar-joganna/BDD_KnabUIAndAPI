@@ -23,20 +23,14 @@ namespace BDD_KnabUIAndAPI.Components
         public IWebElement LoggingUser => WebDriver.FindElement(By.CssSelector("[class='username-readonly']"));
         public IWebElement PasswordInput => WebDriver.FindElement(By.Id("password"));
         public IWebElement LoginSubmitButton => WebDriver.FindElement(By.Id("login-submit"));
-        public IWebElement BtnLoginAtlassian => WebDriver.FindElement(By.XPath("//input[@value='Log in with Atlassian']"));
+        public IWebElement LoginError => WebDriver.FindElement(By.Id("login-error"));
              
                       
-        public void WrongLogin(string username, string password)
-        {
-            UserNameInput.SendKeys(username);
-            PasswordInput.SendKeys(password);
-            LoginSubmitButton.Click();
-        }
-
-       public void Login(string username, string password)
+        public void Login(string username, string password)
         {
             UserNameInput.SendKeys(username);
             ContinueButton.Click();
+            CommonSteps.AddDelay();
             PasswordInput.SendKeys(password);
             LoginSubmitButton.Click();
         }
@@ -48,7 +42,5 @@ namespace BDD_KnabUIAndAPI.Components
                 SignInButton.Click();
             }
         }
-     
-
     }
 }

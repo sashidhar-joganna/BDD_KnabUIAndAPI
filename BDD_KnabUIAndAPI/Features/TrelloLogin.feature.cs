@@ -113,7 +113,66 @@ testRunner.And("the user enters \"sashizen@gmail.com\" and \"Testen01\"", ((stri
 testRunner.And("the user clicks on the Submit button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
-testRunner.Then("the user is successfully logged in to dashboard \"QA Automation\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("the user is successfully logged in to dashboard \"Test Management\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="User logs in with invalid credentials")]
+        [Xunit.TraitAttribute("FeatureTitle", "TrelloLogin")]
+        [Xunit.TraitAttribute("Description", "User logs in with invalid credentials")]
+        public void UserLogsInWithInvalidCredentials()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User logs in with invalid credentials", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 12
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 13
+testRunner.Given("the user enters \"sashizen@gmail.com\" and \"IncorrectPassword\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 14
+testRunner.Then("user is denied access", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="User adds a task to the board")]
+        [Xunit.TraitAttribute("FeatureTitle", "TrelloLogin")]
+        [Xunit.TraitAttribute("Description", "User adds a task to the board")]
+        public void UserAddsATaskToTheBoard()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User adds a task to the board", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 16
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 17
+testRunner.Given("the user is logged in to the dashboard", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 18
+testRunner.When("user adds a task to the board \"Task No:1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 19
+testRunner.Then("the task is added to the board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

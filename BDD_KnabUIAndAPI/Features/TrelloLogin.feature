@@ -7,7 +7,7 @@ Given the user has a valid login credentials
 When the user clicks on the Signin button
 And the user enters "sashizen@gmail.com" and "Testen01"
 And the user clicks on the Submit button 
-Then the user is successfully logged in to dashboard "QA Automation"
+Then the user is successfully logged in to dashboard "Test Management"
 
 Scenario: User logs in with invalid credentials
 Given the user enters "sashizen@gmail.com" and "IncorrectPassword"
