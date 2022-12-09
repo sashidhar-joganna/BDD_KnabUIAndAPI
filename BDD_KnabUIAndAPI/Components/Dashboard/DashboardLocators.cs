@@ -29,7 +29,7 @@ namespace BDD_KnabUIAndAPI.Components
         public IWebElement NewCardName => WebDriver.FindElement(By.CssSelector("[class='list-card-composer-textarea js-card-title']"));
 
         
-        public IWebElement AddCard => WebDriver.FindElement(By.CssSelector("[type='submit'][vakue='Add card']"));
+        public IWebElement AddCard => WebDriver.FindElement(By.CssSelector("[type='submit'][value='Add card']"));
 
     public void SelectAndOpenBoard()
         {
