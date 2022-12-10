@@ -113,6 +113,37 @@ testRunner.Then("the response of the API should fetch the details of the member"
             this.ScenarioCleanup();
         }
         
+        [Xunit.SkippableFactAttribute(DisplayName="Fetch the member boards for the specific user")]
+        [Xunit.TraitAttribute("FeatureTitle", "Trelo API tests")]
+        [Xunit.TraitAttribute("Description", "Fetch the member boards for the specific user")]
+        public void FetchTheMemberBoardsForTheSpecificUser()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Fetch the member boards for the specific user", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 10
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 11
+testRunner.Given("I have the valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 12
+testRunner.When("calling the get method with key \"API_KEY\" and token \"API_TOKEN\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 13
+testRunner.Then("the repsonse contains all the boards", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

@@ -45,9 +45,13 @@ namespace BDD_KnabUIAndAPI.Steps
         public void WhenTheUserEntersAnd(string username, string password)
         {
             LoginLocators login = new LoginLocators(CommonSteps.Driver);
-            login.Login(username, password);
-            CommonSteps.AddDelay();         
-           // Assert.Matches(username, login.LoggingUser.Text);
+            login.KeyinUser(username);
+            CommonSteps.AddDelay();
+            String actual = login.LoggingUser.Text;
+            Assert.Equal(username, actual);
+            login.KeyinPassword(password);
+            
+            
         }
 
         [When(@"the user clicks on the Submit button")]
@@ -61,8 +65,8 @@ namespace BDD_KnabUIAndAPI.Steps
         public void ThenTheUserIsSuccessfullyLoggedInToDashboard(string dashboardTitle)
         {
             DashboardLocators dashboard = new DashboardLocators(CommonSteps.Driver);
-            var actualTitle = dashboard.DashboardTitle.GetAttribute("title");
-           // Assert.Contains(dashboardTitle, actualTitle);
+            var actualTitle = dashboard.DashboardTitle.Text;
+            Assert.Equal(dashboardTitle, actualTitle);
 
         }
 
@@ -73,7 +77,8 @@ namespace BDD_KnabUIAndAPI.Steps
         {
             LoginLocators login = new LoginLocators(CommonSteps.Driver);
             login.SigninClick();
-            login.Login(username, password);
+            login.KeyinUser(username);
+            login.KeyinPassword(password);
             CommonSteps.AddDelay();
         }
 
@@ -81,7 +86,6 @@ namespace BDD_KnabUIAndAPI.Steps
         public void ThenUserIsDeniedAccess()
         {
             LoginLocators login = new LoginLocators(CommonSteps.Driver);
-
             Assert.NotNull(login.LoginError);
         }
 
@@ -91,9 +95,12 @@ namespace BDD_KnabUIAndAPI.Steps
         [Given(@"the user is logged in to the dashboard")]
         public void GivenTheUserIsLoggedInToTheDashboard()
         {
+
+           // this.GivenTheUserEntersAnd(); - Can also reuse the complete steps in other scenarios, with minor modifications. 
             LoginLocators login = new LoginLocators(CommonSteps.Driver);
             login.SigninClick();
-            login.Login(TestData.Username,TestData.Password);
+            login.KeyinUser(TestData.Username);
+            login.KeyinPassword(TestData.Password);
             
         }
 

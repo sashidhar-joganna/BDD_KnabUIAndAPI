@@ -6,8 +6,9 @@ namespace BDD_KnabUIAndAPI.Shared
 {
     public static class TestData
     {
-        public static string APIKey = "aa58ba7ac7ce1a4424e2f26251f7cc01";
-        public static string API_Token = "195b57becc1f33c9538d0310383b42bdf2d900972eee4aa13bb597d2141d7ea5";
+        public static string email = "sashizen@gmail.com";
+        public static string APIKey = "b72074a1897ab2716affd19a7a0c8d05";
+        public static string API_Token = "ae9ea66d79af8ba04d32c7218b618dcd94a787981811a0d8fe327e5c192ab5d2";
 
         public static string Username = "sashizen@gmail.com";
         public static string Password = "Testen01";
