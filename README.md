@@ -38,7 +38,7 @@ This folder structure when adding more scenarios to automate it is easy to scale
 
    - The UI tests are configured to run on Firefox browser and can be extended to run on multiple browsers by initiatilizing the driver in the CommonSteps.cs file
   
-# Test scenarios 
+# Test scenarios automated
 
 This project consists of the following automated test scenarios
 
