@@ -17,7 +17,7 @@ namespace BDD_KnabUIAndAPI.Components
         public IWebDriver? Driver { get; set; }
 
         public IWebElement QA_Autmation_Workspace => WebDriver.FindElement(By.CssSelector("[class='boards-page-board-section-header-name']"));
-        public IWebElement DashboardTitle => WebDriver.FindElement(By.CssSelector("[class='boards-page-board-section-header-name']"));
+        public IWebElement DashboardTitle => WebDriver.FindElement(By.CssSelector("[class='board-tile-details-name']"));
 
         public IWebElement DashboardTile => WebDriver.FindElement(By.ClassName("boards-page-board-section-list-item"));
         public IWebElement CreateBoard => WebDriver.FindElement(By.CssSelector("[class='board-tile mod-add']"));

@@ -67,7 +67,7 @@ namespace BDD_KnabUIAndAPI.Steps
             DashboardLocators dashboard = new DashboardLocators(CommonSteps.Driver);
             var actualTitle = dashboard.DashboardTitle.Text;
             Assert.Equal(dashboardTitle, actualTitle);
-
+          
         }
 
 //Scenario 2:
