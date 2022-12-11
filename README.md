@@ -77,4 +77,10 @@ Given I have the board name
 When I call the Create board API with "Board_name" 
 Then the response should be successful
 
-The dliverables for test plan and test cases related to login and dashboard features are available in separate files
+# Test Plan
+
+The test plan is delivered as a separate document detailing the aspects of a test plan activities. It outlines all the topics when planning a testing project referenced to the 2 features (Login and Dashboard) for this assignment. This test plan ensures a proper planning for any assignment(s)/project(s)
+
+# Test Cases
+
+The test cases is delivered as a separate document detailing the physical test cases for the login and dashboard functionality. The coverage of the test cases is based on the assumption made during this assignment. 
