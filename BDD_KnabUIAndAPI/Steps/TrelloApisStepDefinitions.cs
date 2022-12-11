@@ -13,11 +13,13 @@ namespace BDD_KnabUIAndAPI.Steps
     [Binding]
     public class TrelloApisStepDefinitions
     {
-        private RestResponse membersBoardResponse = null;
+        private RestResponse MembersBoardResponse = null;
+        private RestResponse BoardIdResponse = null;
+        private RestResponse CreateBoardResponse = null;
 
 
 
-        public RestClient CondigureTrelloApi()
+        public RestClient ConfigureTrelloApi()
         {
             RestClient trelloApi = new RestClient("https://api.trello.com/1");
             return trelloApi;
@@ -38,25 +40,29 @@ namespace BDD_KnabUIAndAPI.Steps
          
         }
 
-        [Given(@"the ""(.*)"" of the user")]
-        public void GivenTheOfTheUser(string id)
-        {
-          
-           
-        }
-
-        [When(@"the get method is posted for this ""(.*)""")]
-        public void WhenTheGetMethodIsPostedForThis(string id)
-        {
-           
-        }
-
-
-        [Then(@"the response of the API should fetch the details of the member")]
-        public void ThenTheResponseOfTheAPIShouldFetchTheDetailsOfTheMember()
+        [Given(@"the board ID of a specific board")]
+        public void GivenTheBoardIDOfASpecificBoard()
         {
             
         }
+
+        [When(@"the get board method is posted for this ""(.*)""")]
+        public void WhenTheGetBoardMethodIsPostedForThis(string id)
+        {
+            id = TestData.Board_Id;
+            RestClient TrelloGetBoardClient = ConfigureTrelloApi();
+            RestRequest TrelloGetBoardRequest = ConfigureRequest("boards/" + id, Method.Get);
+            BoardIdResponse = TrelloGetBoardClient.Execute(TrelloGetBoardRequest);
+        }
+
+        [Then(@"the response of the API should fetch the details of the board")]
+        public void ThenTheResponseOfTheAPIShouldFetchTheDetailsOfTheBoard()
+        {
+            Assert.Equal("OK", BoardIdResponse.StatusDescription);
+            Assert.Contains("Test Management", BoardIdResponse.Content);
+           
+        }
+
 
         //Scenario 2
 
@@ -66,20 +72,48 @@ namespace BDD_KnabUIAndAPI.Steps
            
         }
 
-        [When(@"calling the get method with key ""(.*)"" and token ""(.*)""")]
-        public void WhenCallingTheGetMethodWithKeyAndToken(string key, string token)
+        [When(@"calling the get member boards")]
+        public void WhenCallingTheGetMemberBoards()
         {
-            RestClient trelloGetBoardsClient = CondigureTrelloApi();
-            RestRequest trelloGetBoardsRequest = ConfigureRequest("members/me/boards?fields=name,url",Method.Get);
-            membersBoardResponse = trelloGetBoardsClient.Execute(trelloGetBoardsRequest);
-
+            RestClient TrelloGetBoardsClient = ConfigureTrelloApi();
+            RestRequest TrelloGetBoardsRequest = ConfigureRequest("members/me/boards?fields=name,url", Method.Get);
+            MembersBoardResponse = TrelloGetBoardsClient.Execute(TrelloGetBoardsRequest);
         }
 
-        [Then(@"the repsonse contains all the boards")]
-        public void ThenTheRepsonseContainsAllTheBoards()
+        [Then(@"the repsonse contains all the boards belonging to the user")]
+        public void ThenTheRepsonseContainsAllTheBoardsBelongingToTheUser()
         {
-            Assert.Equal("OK", membersBoardResponse.StatusDescription);
-           
+            Assert.Equal("OK", MembersBoardResponse.StatusDescription);
+            Assert.NotNull(MembersBoardResponse);
+        }
+
+
+
+        //Scenario 3:
+
+        [Given(@"I have the board name")]
+        //public void GivenIHaveTheBoardName()
+        //{
+
+        //}
+
+
+        [When(@"I call the Create board API with ""(.*)""")]
+        public void WhenICallTheCreateBoardAPIWith(string boardName)
+        {
+            boardName = TestData.Board_Name;
+            RestClient CreateBoardClient = ConfigureTrelloApi();
+            RestRequest CreateBoardRequest = ConfigureRequest("/boards/?name=" + boardName, Method.Post);
+            CreateBoardResponse = CreateBoardClient.Execute(CreateBoardRequest);
+        }
+
+
+
+        [Then(@"the response should be successful")]
+        public void ThenTheResponseShouldBeSuccessful()
+        {
+            Assert.NotNull(CreateBoardResponse);
+            Assert.Contains(TestData.Board_Name, CreateBoardResponse.Content);
         }
 
 
