@@ -33,12 +33,8 @@ namespace BDD_KnabUIAndAPI.Steps
             configureRequest.AddParameter("token", TestData.API_Token);
             return configureRequest;
         }
-        
-            
-        public TrelloApisStepDefinitions(ScenarioContext scenarioContext)
-        {
-         
-        }
+      
+        //Scenario 1: Get a specific board by calling the api with the specific Board Id
 
         [Given(@"the board ID of a specific board")]
         public void GivenTheBoardIDOfASpecificBoard()
@@ -64,7 +60,7 @@ namespace BDD_KnabUIAndAPI.Steps
         }
 
 
-        //Scenario 2
+        //Scenario 2: Retrieve all the board names for the logged in user
 
         [Given(@"I have the valid credentials")]
         public void GivenIHaveTheValidCredentials()
@@ -89,14 +85,13 @@ namespace BDD_KnabUIAndAPI.Steps
 
 
 
-        //Scenario 3:
+        //Scenario 3: Creating a new board (everytime although the same name it generates a new ID. By this way its unique ID)
 
         [Given(@"I have the board name")]
-        //public void GivenIHaveTheBoardName()
-        //{
+        public void GivenIHaveTheBoardName()
+        {
 
-        //}
-
+        }
 
         [When(@"I call the Create board API with ""(.*)""")]
         public void WhenICallTheCreateBoardAPIWith(string boardName)
@@ -107,17 +102,11 @@ namespace BDD_KnabUIAndAPI.Steps
             CreateBoardResponse = CreateBoardClient.Execute(CreateBoardRequest);
         }
 
-
-
         [Then(@"the response should be successful")]
         public void ThenTheResponseShouldBeSuccessful()
         {
             Assert.NotNull(CreateBoardResponse);
             Assert.Contains(TestData.Board_Name, CreateBoardResponse.Content);
         }
-
-
-
-
     }
 }
